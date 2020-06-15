@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body layout:fragment="content">
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div th:replace="fragments/humberger :: humberger"></div>
+<!-- Humberger End -->
+
+<!--=============== Header Start ================-->
+<div th:replace="fragments/header :: header"></div>
+<!--=============== Header End ================-->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Vegetable’s Package</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <a href="./index.html">Vegetables</a>
+                            <span>Vegetable’s Package</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large" th:src="${productOrderDetailBuyer.getProduct().getImage().get(0).getPath()}">
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel" >
+                            <div th:each="i: ${#numbers.sequence(0, productOrderDetailBuyer.getProduct().getImage().size()-1)}">
+                                <img th:data-imgbigurl="${productOrderDetailBuyer.getProduct().getImage().get(i).getPath()}"
+                                     th:src="${productOrderDetailBuyer.getProduct().getImage().get(i).getPath()}" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3 th:text="${productOrderDetailBuyer.getProduct().name}"></h3>
+
+                        <p th:text="${productOrderDetailBuyer.getProduct().detail}"></p>
+                        <div id="buyer">
+                            <ul>
+                                <li>
+                                    <b>ชื่อผู้ซื้อ</b>
+                                    <span th:text="${productOrderDetailBuyer.getProduct().getSeller().name}"></span>
+                                </li>
+                                <li>
+                                    <b>ปริมาณที่สั่งซื้อ</b>
+                                    <span th:text="${productOrderDetailBuyer.getQuantity()}"> kg</span>
+                                </li>
+                                <li>
+                                    <b>รหัสไปรษณีย์</b>
+                                    <span style="text-transform: uppercase;" id="inputTrack" th:text="${productOrderDetailBuyer.track}">-</span>
+                                </li>
+                                <li>
+                                    <b>ที่อยู่ในการจัดส่ง</b>
+                                    <span th:text="${productOrderDetailBuyer.getBuyer().getAddress()}"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Details Section End -->
+
+<!-- Footer Section Begin -->
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Footer Section End -->
+
+</body>
+</html>

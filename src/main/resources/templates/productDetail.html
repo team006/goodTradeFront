@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body layout:fragment="content">
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div th:replace="fragments/humberger :: humberger"></div>
+<!-- Humberger End -->
+
+<!-- Header Start -->
+<div th:replace="fragments/header :: header"></div>
+<!-- Header End -->
+
+<!-- Hero Section Begin -->
+<div th:replace="fragments/hero :: hero"></div>
+<!-- Hero Section End -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Shop Detail</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./index.html">Home</a>
+                        <a href="./index.html">Vegetables</a>
+                        <span>Vegetable’s Package</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             th:src="${productDetail.getImage().get(0).getPath()}">
+                    </div>
+                    <div class="product__details__pic__slider owl-carousel">
+                        <div th:each="i: ${#numbers.sequence(0, productDetail.getImage().size()-1)}">
+                            <img th:data-imgbigurl="${productDetail.getImage().get(i).getPath()}"
+                                 th:src="${productDetail.getImage().get(i).getPath()}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3 th:text="${productDetail.name}"></h3>
+
+                    <p th:text="${productDetail.detail}"></p>
+
+
+                    <form th:action="@{/productDetail/} + ${productDetail.id} + '/addOrder'" th:object="${productOrder}"
+                          method="post">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                            สั่งซื้อสินค้า
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                            กรุณาใส่รายละเอียดเพิ่มเติม</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="product__details__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input th:field="*{quantity}" th:value="${productOrder.quantity}"
+                                                           type="number" value="1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Detail :</label>
+                                            <textarea th:field="*{detail}" th:value="${productOrder.detail}"
+                                                      class="form-control" id="message-text"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <ul>
+                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>วันปิดรอบการสั่งซื้อ</b> <span th:text="${productDetail.endDate}"></span></li>
+                            <li><b>นํ้าหนัก</b> <span th:text="${productDetail.quantity}+${' kg'}"> </span></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
+
+
+<!-- Footer Section Begin -->
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Footer Section End -->
+
+</body>
+</html>
