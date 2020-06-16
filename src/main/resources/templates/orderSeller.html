@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+<html layout:decorate="~{fragments/layout}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout}">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="Ogani Template" name="description">
+    <meta content="Ogani, unica, creative, html" name="keywords">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 </head>
 
 <body layout:fragment="content">
@@ -24,84 +24,113 @@
 
 <!-- Header Start -->
 <div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <a th:href="@{/}"><img alt="" src="/img/logo.png"></a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li><a th:href="@{/}">หน้าหลัก</a></li>
+                    <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/myProduct}">ร้านค้า</a></li>
+                    <li class="active" sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
+                    <li class="active" sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
+
+                    <li><a href="#">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
 <!-- Header End -->
 
 <!-- Hero Section Begin -->
 <div th:replace="fragments/hero :: hero"></div>
 <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Organi Shop</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>My Product</span>
-                        </div>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>คำสั่งซื้อของฉัน</h2>
+                    <div class="breadcrumb__option">
+                        <a th:href="@{/}">หน้าหลัก</a>
+                        <span>การขายของฉัน</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
 
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-7">
-                    <div class="section-title product__discount__title">
-                        <h2>การซื้อของฉัน</h2>
-                    </div>
-                    <div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row" th:each="order : ${productOrderByProductId}">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <a th:href="@{/orderDetailSeller/}+${order.id}">
-                                <img class="featured__item__pic set-bg" th:src="${order.getProduct().getImage().get(0).getPath()}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6 th:href="${order.id}" th:text="${order.buyer.name}"><samp
-                                            style="color: white; background-color: red; margin-left: 5px ;">Tracked</samp></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-7">
+                <div class="section-title product__discount__title">
+                    <h2>การขายของฉัน</h2>
                 </div>
+                <div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="filter__sort">
+                                <span>จัดเรียงโดย</span>
+                                <select>
+                                    <option value="0">ค่าเริ่มต้น</option>
+                                    <option value="0">ราคาน้อยไปมาก</option>
+                                    <option value="0">ราคามากไปน้อย</option>
+                                    <option value="0">ที่มีการจัดส่งแล้ว</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="filter__found">
+                                <h6>มีคำสั่งซื้อทั้งหมด <span>16</span> รายการ</h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-3">
+                            <div class="filter__option">
+                                <span class="icon_grid-2x2"></span>
+                                <span class="icon_ul"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6" th:each="order : ${productOrderByProductId}">
+                        <div class="product__item">
+                            <a th:href="@{/orderDetailSeller/}+${order.id}">
+                                <img class="featured__item__pic_order set-bg"
+                                     th:src="${order.getProduct().getImage().get(0).getPath()}">
+                            </a>
+                            <div class="product__item__text">
+                                <h6 th:href="${order.id}" th:text="${order.buyer.name}"><samp
+                                        style="color: white; background-color: red; margin-left: 5px ;">Tracked</samp>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </section>
-    <!-- Product Section End -->
+    </div>
+</section>
+<!-- Product Section End -->
 <!-- Footer Section Begin -->
 <div th:replace="fragments/footer :: footer"></div>
 <!-- Footer Section End -->

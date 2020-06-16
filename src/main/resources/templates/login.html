@@ -9,44 +9,58 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
 </head>
+
 
 <body class="body_bg" layout:fragment="content">
 
-    <div class="login_box">
-        <div class="middle-box text-center loginscreen">
-            <div>
-                <div>
-
-                    <h1 class="logo-name"></h1>
-
+<div class="login_box2">
+    <img src="/img/bg_1.jpg" class="bg-img">
+    <div class="row">
+        <div class="col-12">
+            <div class="row space" style="height: 100%; margin-left: 80px;">
+                <div class="col-8 pic" style="padding: 25px 0px 0px 50px">
+                    <img src="/img/fruit.png" width="auto" height="100px">
+                    <div class="login_text">ยินดีต้อนรับสู่ Goods trade</div>
+                    <h4 style="color: white;">สร้างความสุขให้แก่คุณด้วยการซื้อขายที่ดีที่สุด</h4>
                 </div>
-                <h4>Welcome to</h4>
-                <h2>Goods trade</h2>
-                <div class="space">
+                <div class="col-3 text-center" style="background-color: white; padding-top: 25px">
+                    <div style="margin-top: 15%;">
+                        <h5>ลงชื่อเข้าใช้</h5>
+                    </div>
+                    <div class="space">
+                        <form class="m-t" th:action="@{/login}" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" id="username"
+                                       name="username" required="">
+                            </div>
 
-                    <form class="m-t" th:action="@{/login}" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" id="username" name="username" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="">
-                        </div>
-                        <div class="form-actions">
-                        <button type="submit"
-                            class="btn btn-success block full-width m-b butCover">Login</button>
-                        </div>
-                        <br>
-                        <a th:href="@{/register}"><small>Create Account</small></a>
-                        <a href="#"><small>Forgot password?</small></a>
-                    </form>
-
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="รหัสผ่าน" id="password"
+                                       name="password" required="">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit"
+                                        class="btn btn-success block full-width m-b butCover">เข้าสู่ระบบ
+                                </button>
+                            </div>
+                            <br><br>
+                            <a href="#" class="login_text2">
+                                <small>ลืมรหัสผ่าน?</small>
+                            </a>
+                            <hr>
+                            <small>ยังไม่มีบัญชีผู้ใช้?</small>
+                            <a th:href="@{/register}" class="login_text2">
+                                <small>ลงทะเบียน</small>
+                            </a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 
 </body>
 

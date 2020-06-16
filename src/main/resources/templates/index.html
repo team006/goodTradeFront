@@ -1,91 +1,167 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+<html layout:decorate="~{fragments/layout}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout}">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="Ogani Template" name="description">
+    <meta content="Ogani, unica, creative, html" name="keywords">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 </head>
 
 <body layout:fragment="content">
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div th:replace="fragments/humberger :: humberger"></div>
+<!-- Humberger End -->
+
+<!-- Header Start =-->
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <a th:href="@{/}"><img alt="" src="/img/logo.png"></a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li class="active"><a th:href="@{/}">หน้าหลัก</a></li>
+                    <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/myProduct}">ร้านค้า</a></li>
+                    <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
+                    <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
+
+                    <li><a href="#">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+
     </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+<!-- Header End -->
 
-    <!-- Humberger Begin -->
-    <div th:replace="fragments/humberger :: humberger"></div>
-    <!-- Humberger End -->
-
-    <!-- Header Start =-->
-    <div th:replace="fragments/header :: header"></div>
-    <!-- Header End -->
-
-    <!-- Hero Section Begin -->
-        <div th:replace="fragments/hero :: hero"></div>
-    <!-- Hero Section End -->
-
-    <!-- Categories Section Begin -->
-        <div th:replace="fragments/category :: categories"></div>
-    <!-- Categories Section End -->
-
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Product</h2>
+<!-- Hero Section Begin -->
+<div class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>ประเภทสินค้า</span>
                     </div>
+                    <ul>
+                        <li><a href="#">ผลไม้สด</a></li>
+                        <li><a href="#">ผลไม้แห้ง</a></li>
+                        <li><a href="#">พืชผัก</a></li>
+                        <li><a href="#">น้ำผลไม้</a></li>
+                        <li><a href="#">น้ำผัก</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" th:each="product : ${allProducts}">
-                    <div class="featured__item">
-                        <a th:href="${product.id}" >
-                        <img class="featured__item__pic set-bg" th:src="${product.getImage().get(0).getPath()}">
-                        </a>
-                        <div class="featured__item__text">
-                            <h6 th:href="${product.id}" th:text="${product.name}"></h6>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <input placeholder="คุณต้องการสินค้าอะไร?" type="text">
+                            <button class="site-btn" type="submit">ค้นหา</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>089-072-4608</h5>
+                            <span>ติดต่อ 24 ชั่วโฒง</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- Featured Section End -->
-
-    <!-- Banner Begin -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="/img/banner/banner-1.jpg" alt="">
+                <div class="hero__item set-bg" data-setbg="/img/hero/banner.jpg">
+                    <div class="hero__text">
+                        <span>ผลไม้สดใหม่</span>
+                        <h2>พืชผักนานาพันธ์ุ <br/>
+                            <small>ออร์แกนิค</small>
+                            100%
+                        </h2>
+                        <!--                        <a href="#" class="primary-btn">ซื้อเลย</a>-->
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="/img/banner/banner-2.jpg" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Section End -->
+
+
+<!-- Categories Section Begin -->
+<div th:replace="fragments/category :: categories"></div>
+<!-- Categories Section End -->
+
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>สินค้าแนะนำ</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row featured__filter">
+            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" th:each="product : ${allProducts}">
+                <div class="featured__item">
+                    <a th:href="${product.id}">
+                        <img class="featured__item__pic set-bg" th:src="${product.getImage().get(0).getPath()}">
+                    </a>
+                    <div class="featured__item__text">
+                        <h6 th:href="${product.id}" th:text="${product.name}"></h6>
                     </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Featured Section End -->
+
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img alt="" src="/img/banner/banner-1.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img alt="" src="/img/banner/banner-2.jpg">
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <!-- Banner End -->
+</div>
+<br>
+<!-- Banner End -->
 
 
-    <!-- Footer Section Begin -->
-    <div th:replace="fragments/footer :: footer"></div>
-    <!-- Footer Section End -->
+<!-- Footer Section Begin -->
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Footer Section End -->
 
 </body>
 

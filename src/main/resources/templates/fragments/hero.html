@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width,initial-scale=1" name="viewport"/>
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
 
 
 </head>
 <body>
-<div class="hero" th:fragment="hero">
+<div class="hero hero-normal" th:fragment="hero">
     <div class="container">
         <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>ประเภทสินค้า</span>
+                    </div>
+                    <ul style="display: none">
+                        <li><a href="#">ผลไม้สด</a></li>
+                        <li><a href="#">ผลไม้แห้ง</a></li>
+                        <li><a href="#">พืชผัก</a></li>
+                        <li><a href="#">น้ำผลไม้</a></li>
+                        <li><a href="#">น้ำผัก</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <input placeholder="คุณต้องการสินค้าอะไร?" type="text">
+                            <button class="site-btn" type="submit">ค้นหา</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -31,17 +42,12 @@
                         </div>
                         <div class="hero__search__phone__text">
                             <h5>089-072-4608</h5>
-                            <span>ติดต่อ 24 ชม.</span>
+                            <span>ติดต่อ 24 ชั่วโฒง</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero__item set-bg" data-setbg="/img/hero/banner.jpg">
-                    <div class="hero__text">
-                        <span>FRUIT FRESH</span>
-                        <h2>Vegetable <br />100% Organic</h2>
-                        <a href="#" class="primary-btn">SHOP NOW</a>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>
