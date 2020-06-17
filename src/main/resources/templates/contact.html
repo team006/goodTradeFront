@@ -34,7 +34,7 @@
         <div class="col-lg-6">
             <nav class="header__menu">
                 <ul>
-                    <li ><a th:href="@{/}">หน้าหลัก</a></li>
+                    <li><a th:href="@{/}">หน้าหลัก</a></li>
                     <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/myProduct}">ร้านค้า</a></li>
                     <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
                     <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
@@ -96,7 +96,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                 <div class="contact__widget">
                     <span class="icon_clock_alt"></span>
-                    <h4>เวลาให้บริการความช่วยเหลือ</h4>
+                    <h4>เวลาให้บริการสอบถาม</h4>
                     <p>10:00 - 18:00 น.</p>
                 </div>
             </div>
@@ -112,6 +112,45 @@
 </section>
 <!-- Contact Section End -->
 
+<hr>
+<div class="contact-form spad">
+    <div class="container">
+        <h4 style="margin-bottom: 20px"><b>คำถามที่มักพบบ่อย</b></h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="qa_col">
+                    <b>คำถาม</b> : มีช่องทางในการชำระเงินแบบใดบ้าง? <br>
+                    <b>คำตอบ</b> : ตอนนี้มีเฉพาะเก็บเงินปลายทางเท่านั้น
+                </div>
+                <div class="qa_col">
+                    <b>คำถาม</b> : มีบริการขนส่งแบบใดบ้าง? <br>
+                    <b>คำตอบ</b> : การขนส่งมีแบบทั้งแบบธรรมดาและแบบควบคุมอุณหภูมิ ของ SCG EXPRESS เท่านั้น
+                </div>
+                <div class="qa_col">
+                    <b>คำถาม</b> : ฉันสามารถติดตามสถานะการจัดส่งได้อย่างไร? <br>
+                    <b>คำตอบ</b> <span>: ติดตามสถานะการจัดส่งได้ที่ <a
+                        href="https://www.scgexpress.co.th/tracking" style="color: black; font-weight: bold"><u>สำหรับ SCG EXPRESS</u></a></span>
+                </div>
+                <div class="qa_col">
+                    <b>คำถาม</b> : ฉันจะเริ่มขายสินค้าใน Goods Trade ได้อย่างไร? <br>
+                    <b>คำตอบ</b>
+                    <span>: 1.ทำการลงทะเบียนผู้ใช้ให้เรียบร้อย</span>
+                    <div style="margin-left: 62px"> 2.ติดต่อทางเราได้ที่ช่องทางดังนี้ อีเมล :
+                        phamin.prom@mail.kmutt.ac.th หรือ เบอร์โทรศัพท์ : 089-072-4608
+                    </div>
+                    <div style="margin-left: 62px">
+                        3.ทางเราจะขอข้อมูลการละทะเบียนเกษตรกรของท่านและข้อมูลอื่นๆเพื่อตรวจสอบความน่าเชื่อถือ
+                    </div>
+                    <div style="margin-left: 62px">
+                        4.เมื่อทางเราตรวจสอบเรียบร้อยจะทำการเปลี่ยนสิทธฺิ์ของบัญชีผู้ใช้ของท่านให้เป็นร้านค้าในเวลาทำการ
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
 <!--&lt;!&ndash; Map Begin &ndash;&gt;-->
 <!--<div class="map">-->
 <!--    <iframe-->
@@ -143,14 +182,14 @@
         <form action="#">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="ชื่อของคุณ">
+                    <input placeholder="ชื่อของคุณ" type="text">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="email" placeholder="อีเมลของคุณ">
+                    <input placeholder="อีเมลของคุณ" type="email">
                 </div>
                 <div class="col-lg-12 text-center">
                     <textarea placeholder="เขียนข้อความที่นี่"></textarea>
-                    <button type="submit" class="site-btn">ส่งข้อความ</button>
+                    <button class="site-btn" type="submit">ส่งข้อความ</button>
                 </div>
             </div>
         </form>

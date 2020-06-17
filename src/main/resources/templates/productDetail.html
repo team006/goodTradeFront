@@ -100,8 +100,7 @@
 
                     <p th:text="${productDetail.detail}"></p>
 
-                    <samp></samp>
-
+                    <ul>
                     <form method="post" th:action="@{/productDetail/} + ${productDetail.id} + '/addOrder'"
                           th:object="${productOrder}">
                         <!-- Button trigger modal -->
@@ -152,6 +151,11 @@
                             </div>
                         </div>
                     </form>
+                        <li><p style="margin: 0">*การชำระเงินเป็นแบบเก็บเงินปลายทาง(COD)เท่านั้น</p></li>
+                        <li><p >**การจัดส่งจะเป็นของ SCG EXPRESS เท่านั้น</p></li>
+
+                    </ul>
+
                     <ul>
                         <li><b>สถานะสินค้า</b> <span style="color: green">มีสินค้า</span></li>
                         <li><b>วันปิดรอบการสั่งซื้อ</b> <span th:text="${productDetail.endDate}"></span></li>
