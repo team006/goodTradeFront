@@ -100,6 +100,7 @@
 
                     <p th:text="${productDetail.detail}"></p>
 
+                    <samp></samp>
 
                     <form method="post" th:action="@{/productDetail/} + ${productDetail.id} + '/addOrder'"
                           th:object="${productOrder}">
@@ -126,7 +127,7 @@
                                         <div class="form-group">
                                             <label class="col-form-label" for="message-text">รายละเอียด :</label>
                                             <textarea class="form-control" id="message-text"
-                                                      placeholder="" th:field="*{detail}"
+                                                      placeholder="ต้องการอะไรเพิ่มเติม... (ตย.ขอทุเรียนดิบหน่อยจะเอามาทอดคะ)" th:field="*{detail}"
                                                       th:value="${productOrder.detail}"></textarea>
                                         </div>
                                         <div class="product__details__quantity">
@@ -138,9 +139,9 @@
                                                 kg
                                             </div>
                                         </div>
-                                        <p style="margin: 0px">*ค่าจัดส่งขั้นต่ำกิโลกรัมละ 500 บาท </p>
-                                        <p style="margin: 0px">สั่งซื้อ 100 กิโลกรัมขึ้นไปค่าจัดส่งกิโลกรัมละ 450 บาท </p>
-                                        <p style="margin: 0px">สั่งซื้อ 250 กิโลกรัมขึ้นไปจัดส่งฟรี </p>
+                                        <p style="margin: 0px">*ค่าจัดส่งขั้นต่ำ 500 บาท </p>
+                                        <p style="margin: 0px">**สั่งซื้อ 100 กิโลกรัมขึ้นไปค่าจัดส่งขั้นต่ำ 400 บาท </p>
+                                        <p style="margin: 0px">***สั่งซื้อ 250 กิโลกรัมขึ้นไปจัดส่งฟรี </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-dismiss="modal" type="button">ปิด
