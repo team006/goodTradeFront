@@ -126,7 +126,8 @@
                                         <div class="form-group">
                                             <label class="col-form-label" for="message-text">รายละเอียด :</label>
                                             <textarea class="form-control" id="message-text"
-                                                      th:field="*{detail}" th:value="${productOrder.detail}"></textarea>
+                                                      placeholder="" th:field="*{detail}"
+                                                      th:value="${productOrder.detail}"></textarea>
                                         </div>
                                         <div class="product__details__quantity">
                                             <div class="quantity">
@@ -138,8 +139,8 @@
                                             </div>
                                         </div>
                                         <p style="margin: 0px">*ค่าจัดส่งขั้นต่ำกิโลกรัมละ 500 บาท </p>
-                                        <p style="margin: 0px">สั่งซื้อ 10 กิโลกรัมขึ้นไปค่าจัดส่งกิโลกรัมละ 450 บาท </p>
-                                        <p style="margin: 0px">สั่งซื้อ 50 กิโลกรัมขึ้นไปจัดส่งฟรี </p>
+                                        <p style="margin: 0px">สั่งซื้อ 100 กิโลกรัมขึ้นไปค่าจัดส่งกิโลกรัมละ 450 บาท </p>
+                                        <p style="margin: 0px">สั่งซื้อ 250 กิโลกรัมขึ้นไปจัดส่งฟรี </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-dismiss="modal" type="button">ปิด
