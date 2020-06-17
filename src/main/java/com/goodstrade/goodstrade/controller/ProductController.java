@@ -149,4 +149,8 @@ public class ProductController {
         return "redirect:/{id}";
     }
 
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
 }
