@@ -1742,7 +1742,7 @@ ol {
 }
 
 .product__details__pic__item img {
-    min-width: 100%;
+    height: 400px;
 }
 
 .product__details__pic__slider img {

@@ -39,7 +39,7 @@
                     <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
                     <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
 
-                    <li><a href="#">ติดต่อเรา</a></li>
+                    <li><a th:href="@{/contact}">ติดต่อเรา</a></li>
                 </ul>
             </nav>
         </div>

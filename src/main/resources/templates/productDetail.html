@@ -39,7 +39,7 @@
                     <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
                     <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
 
-                    <li><a href="#">ติดต่อเรา</a></li>
+                    <li><a th:href="@{/contact}">ติดต่อเรา</a></li>
                 </ul>
             </nav>
         </div>
@@ -136,7 +136,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p><samp>*</samp>ค่าจัดส่งขั้นต่ำกิโลกรัม 500 บาท ถ้าสั่งซื้อ 10 กิโลกรัมขึ้นไปค่าจัดส่งกิโลกรัมละ 450 บาท </p>
+                                        <p style="margin: 0px">*ค่าจัดส่งขั้นต่ำกิโลกรัมละ 500 บาท </p>
+                                        <p style="margin: 0px">สั่งซื้อ 10 กิโลกรัมขึ้นไปค่าจัดส่งกิโลกรัมละ 450 บาท </p>
+                                        <p style="margin: 0px">สั่งซื้อ 50 กิโลกรัมขึ้นไปจัดส่งฟรี </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-dismiss="modal" type="button">ปิด

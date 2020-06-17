@@ -49,35 +49,35 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="header__logo">
-                    <a th:href="@{/}"><img alt="" src="/img/logo.png"></a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <nav class="header__menu">
-                    <ul>
-                        <li><a th:href="@{/}">หน้าหลัก</a></li>
-                        <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/myProduct}">ร้านค้า</a></li>
-                        <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
-                        <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-3">-->
+<!--                <div class="header__logo">-->
+<!--                    <a th:href="@{/}"><img alt="" src="/img/logo.png"></a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6">-->
+<!--                <nav class="header__menu">-->
+<!--                    <ul>-->
+<!--                        <li><a th:href="@{/}">หน้าหลัก</a></li>-->
+<!--                        <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/myProduct}">ร้านค้า</a></li>-->
+<!--                        <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>-->
+<!--                        <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>-->
 
-                        <li><a href="#">ติดต่อเรา</a></li>
-                    </ul>
-                </nav>
-            </div>
+<!--                        <li><a href="#">ติดต่อเรา</a></li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+<!--            </div>-->
 
-        </div>
-        <div class="humberger__open">
-            <i class="fa fa-bars"></i>
-        </div>
-    </div>
+<!--        </div>-->
+<!--        <div class="humberger__open">-->
+<!--            <i class="fa fa-bars"></i>-->
+<!--        </div>-->
+<!--    </div>-->
     <!-- Header End -->
 
     <!-- Hero Section Begin -->
-    <div th:replace="fragments/hero :: hero"></div>
+<!--    <div th:replace="fragments/hero :: hero"></div>-->
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
