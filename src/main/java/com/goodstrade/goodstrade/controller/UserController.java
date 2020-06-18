@@ -151,25 +151,4 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    @PostMapping("/register")
-//    String register(@Valid @ModelAttribute("createUser") User createUser, BindingResult result, ModelMap model) {
-//        log.info(createUser.toString());
-//        if (result.hasErrors()) {
-//            return "index";
-//        }
-//
-//        registerValidator.validate(createUser, result);
-//
-//        if (result.hasErrors()) {
-//            List<ObjectError> allErrors = result.getAllErrors();
-//            for (ObjectError objectError : allErrors) {
-//                log.error("\t*** " + objectError);
-//            }
-//            return "index";
-//        } else {
-//            userService.save(createUser);
-//            return "redirect:login";
-//        }
-//    }
-
 }

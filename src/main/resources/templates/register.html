@@ -110,6 +110,7 @@
                             <div class="checkout__input">
                                 <p>ชื่อผู้ใช้<span>*</span></p>
                                 <input th:field="*{username}" th:value="${createUser.getUsername()}" type="text" minlength="5" required>
+                                <label style="color: red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username นี้มีผู้ใช้แล้ว</label>
                             </div>
                             <div class="checkout__input">
                                 <p>รหัสผ่าน<span>*</span></p>
@@ -123,6 +124,7 @@
                                 <p>อีเมล<span>*</span></p>
                                 <input th:field="*{email}" type="email" th:value="${createUser.getEmail()}" minlength="10" maxlength="120" title="EX.sitkmutt@gmail.com"
                                     required>
+                                <label style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
                             </div>
                             <div class="checkout__input">
                                 <p>ที่อยู่สำหรับจัดส่งสินค้า<span>*</span></p>

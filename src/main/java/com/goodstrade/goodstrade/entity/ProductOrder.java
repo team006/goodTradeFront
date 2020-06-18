@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Date;
 
 import static javax.persistence.TemporalType.TIMESTAMP;
@@ -20,6 +21,7 @@ public class ProductOrder extends BaseEntity {
     private String detail;
 
     @NotNull
+    @Positive
     private long quantity;
 
     private String track;

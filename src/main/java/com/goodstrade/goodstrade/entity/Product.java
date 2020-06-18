@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class Product extends BaseEntity {
     private String detail;
 
     @NotNull
+    @Positive
     private long quantity;
 
     private Date startDate;

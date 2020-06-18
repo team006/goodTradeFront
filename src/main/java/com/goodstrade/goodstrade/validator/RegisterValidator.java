@@ -22,11 +22,17 @@ public class RegisterValidator implements Validator {
     public void validate(Object target, Errors errors) {
         User user = (User) target;
 
+        User checkusername = userRepository.findByUsername(user.getUsername());
+        if (checkusername != null){
+            errors.rejectValue("username",null , "username นี้มีผู้ใช้งานแล้ว");
+        }
+
         // Check Email is not registered.
         User checkemail = userRepository.findByEmail(user.getEmail());
         if (checkemail != null) {
-            errors.rejectValue("email", null, "This email was registered");
+            errors.rejectValue("email", null, "email นี้มีผู้ใช้งานแล้ว");
         }
     }
+
 
 }

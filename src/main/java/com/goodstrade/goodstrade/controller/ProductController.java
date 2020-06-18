@@ -12,6 +12,7 @@ import com.goodstrade.goodstrade.repository.ProductOrderRepository;
 import com.goodstrade.goodstrade.repository.ProductRepository;
 import com.goodstrade.goodstrade.service.product.ProductServiceImp;
 import com.goodstrade.goodstrade.validator.AddProductValidator;
+import com.goodstrade.goodstrade.validator.OrderValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,8 @@ public class ProductController {
     private ObjectMapper objectMapper;
     @Autowired
     private AddProductValidator addProductValidator;
+    @Autowired
+    private OrderValidator orderValidator;
 
     @GetMapping("/")
     public String getProductAllProduct(ModelMap model){
@@ -58,12 +61,14 @@ public class ProductController {
         return "index";
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public String getProductDetailById(@PathVariable Long id, ModelMap model) {
+        if(!model.containsAttribute("productOrder")) {
+            model.addAttribute("productOrder", new ProductOrder());
+        }
+
         Product productId = productServiceImp.getProductDetailById(id);
-        ProductOrder productOrder = new ProductOrder();
         model.addAttribute("productDetail", productId);
-        model.addAttribute("productOrder", productOrder);
         return "productDetail";
     }
 
@@ -120,23 +125,31 @@ public class ProductController {
         addProduct.setSeller(user);
         addProduct.setImage(images);
 
-
-
         productRepository.save(addProduct);
         return "redirect:/myProduct";
     }
 
-    @PostMapping("/productDetail/{id}/addOrder")
+    @PostMapping("/productDetail/{productId}/addOrder")
     public String addOrder(@Valid ProductOrder productOrder,
-                           @PathVariable Long id){
+                           @PathVariable Long productId,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes){
 
-        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        orderValidator.validate(productOrder,bindingResult,productId);
+        if (bindingResult.hasErrors()){
+            log.info("Quantity Form Error");
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productOrder",bindingResult);
+            redirectAttributes.addFlashAttribute("productOrder", productOrder);
+            return  "redirect:/" + productId;
+        }
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 //        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //        Date date = new Date();
 //        addProductOrder.setDate(date);
 
-        Product product = productRepository.findProductById(id);
+        Product product = productRepository.findProductById(productId);
 
         ProductOrder addProductOrder = new ProductOrder();
         addProductOrder.setBuyer(user);
@@ -145,8 +158,16 @@ public class ProductController {
         addProductOrder.setDate(new Date());
         addProductOrder.setQuantity(productOrder.getQuantity());
         addProductOrder.setDetail(productOrder.getDetail());
+
+        long allQuantityProduct = product.getQuantity();
+        long QuantityOrder = addProductOrder.getQuantity();
+        long totalQuantity = allQuantityProduct-QuantityOrder;
+        product.setQuantity(totalQuantity);
+
         productOrderRepository.save(addProductOrder);
-        return "redirect:/{id}";
+        productRepository.save(product);
+
+        return "redirect:/" + productId;
     }
 
     @GetMapping("/contact")
