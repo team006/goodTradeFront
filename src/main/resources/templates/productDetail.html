@@ -39,7 +39,7 @@
                     <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
                     <li sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
 
-                    <li><a th:href="@{/contact}">ติดต่อเรา</a></li>
+                    <li><a th:href="@{/contact}">ศูนย์ช่วยเหลือ</a></li>
                 </ul>
             </nav>
         </div>
@@ -140,11 +140,11 @@
                                                 kg
                                             </div>
                                         </div>
-                                        <p style="margin: 0px">*ค่าจัดส่งขั้นต่ำต่อกล่อง 50 บาท (กล่องละไม่เกิน 20
+                                        <p style="margin: 0px"><samp style="color: red;">*</samp>ค่าจัดส่งขั้นต่ำต่อกล่อง 50 บาท (กล่องละไม่เกิน 20
                                             กก.) </p>
-                                        <p style="margin: 0px">**สั่งซื้อ 100 กก. ขึ้นไปค่าจัดส่งขั้นต่ำต่อกล่อง 40
+                                        <p style="margin: 0px"><samp style="color: red;">***</samp>สั่งซื้อ 100 กก. ขึ้นไปค่าจัดส่งขั้นต่ำต่อกล่อง 40
                                             บาท </p>
-                                        <p style="margin: 0px">***สั่งซื้อ 250 กก. ฃึ้นไปจัดส่งฟรี </p>
+                                        <p style="margin: 0px"><samp style="color: red;">***</samp>สั่งซื้อ 250 กก. ฃึ้นไปจัดส่งฟรี </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-dismiss="modal" type="button">ปิด
@@ -155,8 +155,8 @@
                             </div>
                         </div>
                     </form>
-                    <p style="margin: 0">*ขอสงวนสิทธิ์การชำระเงินเป็นแบบเก็บเงินปลายทาง(COD)เท่านั้น</p>
-                    <p>**ขอสงวนสิทธิ์การจัดส่งเป็นของ SCG EXPRESS เท่านั้น</p>
+                    <p style="margin: 0"><samp style="color: red;">*</samp>ขอสงวนสิทธิ์การชำระเงินเป็นแบบเก็บเงินปลายทาง(COD)เท่านั้น</p>
+                    <p><samp style="color: red;">**</samp>ขอสงวนสิทธิ์การจัดส่งเป็นของ SCG EXPRESS เท่านั้น</p>
 
 
                     <ul>
