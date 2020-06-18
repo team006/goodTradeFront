@@ -36,8 +36,10 @@
                 <ul>
                     <li><a th:href="@{/}">หน้าหลัก</a></li>
                     <li sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/myProduct}">ร้านค้า</a></li>
-                    <li class="active" sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a></li>
-                    <li class="active" sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a></li>
+                    <li class="active" sec:authorize="hasRole('ROLE_SHOP')"><a th:href="@{/orderSeller}">คำสั่งซื้อ</a>
+                    </li>
+                    <li class="active" sec:authorize="hasRole('ROLE_CLIENT')"><a th:href="@{/orderBuyer}">คำสั่งซื้อ</a>
+                    </li>
 
                     <li><a th:href="@{/contact}">ศูนย์ช่วยเหลือ</a></li>
                 </ul>
@@ -96,7 +98,8 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6>มีคำสั่งซื้อทั้งหมด <span th:text="${productOrderByProductId.size()}">16</span> รายการ</h6>
+                                <h6>มีคำสั่งซื้อทั้งหมด <span th:text="${productOrderByProductId.size()}">16</span>
+                                    รายการ</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -117,9 +120,12 @@
                                      th:src="${order.getProduct().getImage().get(0).getPath()}">
                             </a>
                             <div class="product__item__text">
-                                <h6 th:href="${order.id}" th:text="${order.buyer.name}"><samp
-                                        style="color: white; background-color: red; margin-left: 5px ;"></samp>
-                                </h6>
+                                <span> ชื่อผู้ซื้อ :</span>
+                                <span th:href="${order.id}" th:text="${order.buyer.name}"></span>
+                                <span> สินค้า :</span>
+                                <span style="display: inline-block" th:text="${order.getProduct().name}"></span>
+                                <samp class="showTrack">Tracked</samp>
+
                             </div>
                         </div>
                     </div>

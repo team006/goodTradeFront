@@ -1329,6 +1329,12 @@ ol {
   Shop Grid
 -----------------------*/
 
+.showTrack {
+    color: white;
+    background-color: red;
+    margin-left: 5px;
+}
+
 .product {
     padding-top: 80px;
     padding-bottom: 80px;

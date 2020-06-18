@@ -117,9 +117,8 @@
                                      th:src="${order.getProduct().getImage().get(0).getPath()}">
                             </a>
                             <div class="product__item__text">
-                                <h6 th:href="${order.id}" th:text="${order.getProduct().name}"><samp
-                                        style="color: white; background-color: red; margin-left: 5px ;">Tracked</samp>
-                                </h6>
+                                <span th:href="${order.id}" th:text="${order.getProduct().name}"></span>
+                                <samp class="showTrack">Tracked</samp>
                             </div>
                         </div>
                     </div>
